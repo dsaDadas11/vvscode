@@ -1,0 +1,4 @@
+蓝桥杯省赛：
+https://www.luogu.com.cn/problem/list?keyword=%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%9C%81%E8%B5%9B&type=AT%7CB%7CCF%7CP%7CSP%7CUVA&page=1
+蓝桥杯国赛：
+https://www.luogu.com.cn/problem/list?keyword=%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%9B%BD%E8%B5%9B&type=AT%7CB%7CCF%7CP%7CSP%7CUVA&page=1

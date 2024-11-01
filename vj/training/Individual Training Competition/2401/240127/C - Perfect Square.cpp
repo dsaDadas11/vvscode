@@ -1,0 +1,74 @@
+/*
+ * @Author: dsaDadas11
+ * @Date: 2024-01-15 17:40:03
+ * @LastEditTime: 2024-01-27 21:29:54
+ * @Description: go for it!
+ */
+#include<bits/stdc++.h>
+#define endl '\n'
+#define ll long long
+#define int ll
+using namespace std;
+constexpr int N=1e6+7;
+constexpr int M=2e3+7;
+char mp[M][M];
+void solve()
+{
+	int n; cin>>n;
+	int cnt=0;
+	for(int i=1;i<=n;i++)
+		for(int j=1;j<=n;j++)
+			cin>>mp[i][j];
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=1;j<=n;j++)
+		{
+			if(mp[i][j]!=mp[j][n-i+1]&&((mp[i][j]-'0')>(mp[j][n-i+1]-'0')))
+			{
+				cnt+=(mp[i][j]-'0')-(mp[j][n-i+1]-'0');
+				mp[j][n-i+1]=mp[i][j];
+			}
+		}
+	}
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=1;j<=n;j++)
+		{
+			if(mp[i][j]!=mp[j][n-i+1]&&((mp[i][j]-'0')>(mp[j][n-i+1]-'0')))
+			{
+				cnt+=(mp[i][j]-'0')-(mp[j][n-i+1]-'0');
+				mp[j][n-i+1]=mp[i][j];
+			}
+		}
+	}
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=1;j<=n;j++)
+		{
+			if(mp[i][j]!=mp[j][n-i+1]&&((mp[i][j]-'0')>(mp[j][n-i+1]-'0')))
+			{
+				cnt+=(mp[i][j]-'0')-(mp[j][n-i+1]-'0');
+				mp[j][n-i+1]=mp[i][j];
+			}
+		}
+	}
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=1;j<=n;j++)
+		{
+			if(mp[i][j]!=mp[j][n-i+1]&&((mp[i][j]-'0')>(mp[j][n-i+1]-'0')))
+			{
+				cnt+=(mp[i][j]-'0')-(mp[j][n-i+1]-'0');
+				mp[j][n-i+1]=mp[i][j];
+			}
+		}
+	}
+	cout<<cnt<<endl;
+}
+signed main()
+{
+	ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+	int T=1; cin>>T;
+	while(T--){solve();}
+	return 0;
+}
