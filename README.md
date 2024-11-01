@@ -1,2 +1,2 @@
 # vvscode
-code my
+write the code and the solution of the problem
