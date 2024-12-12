@@ -1,12 +1,13 @@
 /*
  * @Author: dsaDadas11
  * @Date: 2024-11-11 20:58:59
- * @LastEditTime: 2024-11-11 21:00:54
+ * @LastEditTime: 2024-11-13 17:19:31
  * @Description: go for it!
  */
 /*
  1700的模拟就这样吧，没啥难度
  卡常卡的有点狠
+ vector要清空再用resize，不然RE
 */
 #include<bits/stdc++.h>
 #define endl '\n'
@@ -20,11 +21,39 @@ int dy[7]={-1,1,0,0};
 int n,m;
 int cnt,sum;
 int x1,y11;
+vector<vector<char> > ch;
+vector<vector<int> > vis;
+int bfs(int x,int y)
+{
+	queue<pair<int,int> > q;
+	int sum=0;
+	q.push({x,y});
+	while(!q.empty())
+	{
+		auto [xx,yy]=q.front();
+		q.pop();
+		if(vis[xx][yy]) continue;
+		sum++;
+		vis[xx][yy]=cnt;
+		for(int i=0;i<4;i++)
+		{
+			x1=xx+dx[i];
+			y11=yy+dy[i];
+			if(x1<1||x1>n||y11<1||y11>m) continue;
+			if(ch[x1][y11]=='.') continue;
+			if(vis[x1][y11]) continue;
+			q.push({x1,y11});
+		}
+	}
+	return sum;
+}
 void solve()
 {
 	cin>>n>>m;
 	cnt=0;
-	vector<vector<char> > ch(n+1,vector<char>(m+1));
+	ch.clear(),vis.clear();
+	ch.resize(n+1,vector<char>(m+1));
+	vis.resize(n+1,vector<int>(m+1));
 	for(int i=1;i<=n;i++)
 	{
 		for(int j=1;j<=m;j++)
@@ -32,7 +61,6 @@ void solve()
 			cin>>ch[i][j];
 		}
 	}
-	vector<vector<int> > vis(n+1,vector<int>(m+1));
 	vector<int> mp; // 记录一个连通块中有多少个节点
 	mp.push_back(0);
 	for(int i=1;i<=n;i++)
@@ -42,27 +70,7 @@ void solve()
 			if(ch[i][j]=='#'&&!vis[i][j])
 			{
 				++cnt;
-				queue<pair<int,int> > q;
-				sum=0;
-				q.push({i,j});
-				while(!q.empty())
-				{
-					auto [xx,yy]=q.front();
-					q.pop();
-					if(vis[xx][yy]) continue;
-					++sum;
-					vis[xx][yy]=cnt;
-					for(int i=0;i<4;i++)
-					{
-						x1=xx+dx[i];
-						y11=yy+dy[i];
-						if(x1<1||x1>n||y11<1||y11>m) continue;
-						if(ch[x1][y11]=='.') continue;
-						if(vis[x1][y11]) continue;
-						q.push({x1,y11});
-					}
-				}
-				mp.push_back(sum);
+				mp.push_back(bfs(i,j));
 			}
 		}
 	}
