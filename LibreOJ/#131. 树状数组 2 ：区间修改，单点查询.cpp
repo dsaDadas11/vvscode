@@ -4,6 +4,7 @@
  * @LastEditTime: 2024-02-01 18:39:19
  * @Description: go for it!
  */
+// URL: https://loj.ac/p/131
 #include<bits/stdc++.h>
 #define endl '\n'
 #define ll long long

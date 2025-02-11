@@ -1,9 +1,10 @@
 /*
  * @Author: dsaDadas11
  * @Date: 2024-02-01 19:46:57
- * @LastEditTime: 2024-02-01 19:47:02
+ * @LastEditTime: 2025-01-11 19:02:49
  * @Description: go for it!
  */
+// URL: https://loj.ac/p/132
 #include<bits/stdc++.h>
 #define endl '\n'
 #define ll long long
