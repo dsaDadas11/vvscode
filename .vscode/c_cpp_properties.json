@@ -4,12 +4,12 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++",
-                "C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32",
-                "C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward",
-                "C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.2.0/include",
-                "C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed",
-                "C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"
+                "C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++",
+                "C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/x86_64-w64-mingw32",
+                "C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/backward",
+                "C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/include",
+                "C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/include-fixed",
+                "C:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../x86_64-w64-mingw32/include"
             ],
             "defines": [
                 "_DEBUG",
