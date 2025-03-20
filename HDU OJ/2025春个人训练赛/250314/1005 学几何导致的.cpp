@@ -1,7 +1,7 @@
 /*
  * @Author: dsaDadas11
- * @Date: 2025-02-11 11:51:34
- * @LastEditTime: 2025-03-18 21:52:01
+ * @Date: 2025-03-15 13:03:29
+ * @LastEditTime: 2025-03-15 13:03:41
  * @Description: go for it!
  */
 #include<bits/stdc++.h>
@@ -12,14 +12,16 @@ using namespace std;
 constexpr int N=1e6+7;
 constexpr int M=2e3+7;
 int n,k;
+int sq(int x)
+{
+    return (x/2)*((x+1)/2);
+}
 void solve()
 {
     cin>>n>>k;
-    for(int i=1;i<=n;i++)
-    {
-        cout<<k*(((n-1)&(i-1))==i-1)<<' ';
-    }
-    cout<<endl;
+    if(k&1) return cout<<"0"<<endl,void();
+    k/=2;
+    cout<<(n%k)*sq(n/k+1)+(k-n%k)*sq(n/k)<<endl;
 }
 signed main()
 {

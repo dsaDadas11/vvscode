@@ -1,7 +1,7 @@
 /*
  * @Author: dsaDadas11
- * @Date: 2025-02-11 11:51:34
- * @LastEditTime: 2025-03-18 21:52:01
+ * @Date: 2025-03-11 20:30:13
+ * @LastEditTime: 2025-03-11 20:30:36
  * @Description: go for it!
  */
 #include<bits/stdc++.h>
@@ -11,15 +11,13 @@
 using namespace std;
 constexpr int N=1e6+7;
 constexpr int M=2e3+7;
-int n,k;
+int n,k,p;
 void solve()
 {
-    cin>>n>>k;
-    for(int i=1;i<=n;i++)
-    {
-        cout<<k*(((n-1)&(i-1))==i-1)<<' ';
-    }
-    cout<<endl;
+    cin>>n>>k>>p;
+    int ans=(abs(k)+p-1)/p;
+    if(ans>n) cout<<"-1"<<endl;
+    else cout<<ans<<endl;
 }
 signed main()
 {

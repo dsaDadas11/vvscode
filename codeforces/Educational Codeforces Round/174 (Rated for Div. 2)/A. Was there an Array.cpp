@@ -1,9 +1,13 @@
 /*
  * @Author: dsaDadas11
- * @Date: 2025-02-11 11:51:34
- * @LastEditTime: 2025-03-18 21:52:01
+ * @Date: 2025-03-09 10:26:57
+ * @LastEditTime: 2025-03-09 10:27:19
  * @Description: go for it!
  */
+/*
+ 解题思路：
+ 010是不行的
+*/
 #include<bits/stdc++.h>
 #define endl '\n'
 #define ll long long
@@ -11,15 +15,17 @@
 using namespace std;
 constexpr int N=1e6+7;
 constexpr int M=2e3+7;
-int n,k;
+int n;
+int b[107];
 void solve()
 {
-    cin>>n>>k;
-    for(int i=1;i<=n;i++)
+    cin>>n;
+    for(int i=2;i<=n-1;i++) cin>>b[i];
+    for(int i=3;i<=n-2;i++)
     {
-        cout<<k*(((n-1)&(i-1))==i-1)<<' ';
+        if(b[i-1]==1&&b[i+1]==1&&b[i]==0) return cout<<"NO"<<endl,void();
     }
-    cout<<endl;
+    cout<<"YES"<<endl;
 }
 signed main()
 {

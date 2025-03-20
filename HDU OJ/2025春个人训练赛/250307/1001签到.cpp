@@ -1,7 +1,7 @@
 /*
  * @Author: dsaDadas11
- * @Date: 2025-02-11 11:51:34
- * @LastEditTime: 2025-03-18 21:52:01
+ * @Date: 2025-03-07 18:32:58
+ * @LastEditTime: 2025-03-07 18:33:13
  * @Description: go for it!
  */
 #include<bits/stdc++.h>
@@ -11,15 +11,24 @@
 using namespace std;
 constexpr int N=1e6+7;
 constexpr int M=2e3+7;
-int n,k;
+int n;
+string s;
 void solve()
 {
-    cin>>n>>k;
+    cin>>n;
+    cin>>s;
+    string t;
+    bool flag=0;
     for(int i=1;i<=n;i++)
     {
-        cout<<k*(((n-1)&(i-1))==i-1)<<' ';
+        cin>>t;
+        if(t==s)
+        {
+            flag=1;
+            cout<<i<<endl;
+        }
     }
-    cout<<endl;
+    if(!flag)cout<<"-1"<<endl;
 }
 signed main()
 {

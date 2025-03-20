@@ -1,9 +1,12 @@
 /*
  * @Author: dsaDadas11
- * @Date: 2025-02-11 11:51:34
- * @LastEditTime: 2025-03-18 21:52:01
+ * @Date: 2025-03-09 11:24:22
+ * @LastEditTime: 2025-03-09 11:30:13
  * @Description: go for it!
  */
+/*
+ 需要注意 dp[2]是双倍贡献
+*/
 #include<bits/stdc++.h>
 #define endl '\n'
 #define ll long long
@@ -11,15 +14,22 @@
 using namespace std;
 constexpr int N=1e6+7;
 constexpr int M=2e3+7;
-int n,k;
+constexpr int mod=998244353;
+int n;
+int a[N];
+int dp[4];
 void solve()
 {
-    cin>>n>>k;
+    memset(dp,0,sizeof dp);
+    cin>>n;
+    for(int i=1;i<=n;i++) cin>>a[i];
     for(int i=1;i<=n;i++)
     {
-        cout<<k*(((n-1)&(i-1))==i-1)<<' ';
+        if(a[i]==3) dp[3]=(dp[3]+dp[2])%mod;
+        else if(a[i]==2) dp[2]=(dp[2]*2+dp[1])%mod;
+        else dp[1]++;
     }
-    cout<<endl;
+    cout<<dp[3]<<endl;
 }
 signed main()
 {
