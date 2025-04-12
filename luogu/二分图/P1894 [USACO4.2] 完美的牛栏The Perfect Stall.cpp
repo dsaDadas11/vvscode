@@ -1,24 +1,20 @@
 /*
- * @Author: HuangCe
- * @Date: 2025-02-25 19:16:08
- * @LastEditTime: 2025-02-25 19:22:17
+ * @Author: dsaDadas11
+ * @Date: 2025-04-05 11:10:51
+ * @LastEditTime: 2025-04-05 11:10:59
  * @Description: go for it!
  */
-/*
- 二分图匹配是指两个集合之间相连的边中没有相同的顶点的数量
- 简单来说 左边是男，右边是女，能匹配到的最大情侣数量就是二分图最大匹配
-*/
 #include<bits/stdc++.h>
 #define endl '\n'
 #define ll long long
 #define int ll
 using namespace std;
-constexpr int N=5e4+7;
+constexpr int N=1e6+7;
 constexpr int M=2e3+7;
-int n,m,e;
-int vis[507];
-int match[507]; // 女匹配男 vis[女]=男
-vector<int> g[N];
+int n,m;
+bool vis[207];
+int match[207];
+vector<int> g[207];
 bool dfs(int u)
 {
     for(auto v:g[u])
@@ -35,17 +31,21 @@ bool dfs(int u)
 }
 void solve()
 {
-    cin>>n>>m>>e;
-    int u,v;
-    for(int i=1;i<=e;i++)
+    cin>>n>>m;
+    int x,v;
+    for(int i=1;i<=m;i++)
     {
-        cin>>u>>v;
-        g[u].push_back(v);
+        cin>>x;
+        for(int j=1;j<=x;j++)
+        {
+            cin>>v;
+            g[i].push_back(v);
+        }
     }
     int ans=0;
     for(int i=1;i<=n;i++)
     {
-        for(int i=1;i<=m;i++) vis[i]=0;
+        for(int j=1;j<=m;j++) vis[j]=0;
         if(dfs(i)) ans++;
     }
     cout<<ans<<endl;
