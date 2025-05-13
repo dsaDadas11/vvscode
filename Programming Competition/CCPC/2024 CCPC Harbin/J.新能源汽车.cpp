@@ -1,7 +1,7 @@
 /*
 * @Author: dsaDadas11
 * @Date: 2024-10-20 19:51:33
- * @LastEditTime: 2024-10-30 13:25:17
+* @LastEditTime: 2025-05-06 20:05:25
 * @Description: go for it!
 */
 #include<bits/stdc++.h>
@@ -194,4 +194,107 @@ ans: 10
 10 2
 
 ans: 22
+*/
+
+
+/*
+ 更简便的写法：
+#include<bits/stdc++.h>
+#define endl '\n'
+#define ll long long
+#define int ll
+#define pll pair<int,int>
+using namespace std;
+constexpr int N=1e6+7;
+constexpr int M=2e3+7;
+int n,m;
+int a[N],b[N];
+int x[N],t[N];
+set<int> nxt[N];
+void solve()
+{
+	cin>>n>>m;
+	for(int i=1;i<=n;i++)
+	{
+		cin>>a[i];
+		b[i]=a[i];
+		nxt[i].clear();
+	}
+	
+	multiset<int> suf;
+	set<pll> elc;
+	for(int i=1;i<=m;i++)
+	{
+		cin>>x[i]>>t[i];
+		suf.insert(t[i]);
+		elc.insert({x[i],t[i]});
+		nxt[t[i]].insert(x[i]);
+	}
+	
+	// 初始化无依赖的电瓶
+    int sum=0;
+	for(int i=1;i<=n;i++)
+	{
+		if(!suf.count(i)) sum+=a[i];
+	}
+	
+	int ans=0;
+	for(int i=1;i<=m;i++)
+	{
+		// 走到 x[i]
+		while(ans<x[i]&&elc.size())
+		{
+			int pos=elc.begin()->second;
+            int dist=elc.begin()->first;
+			if(ans+a[pos]>=x[i])
+			{
+				a[pos]-=x[i]-ans;
+				ans=x[i];
+			}
+			else
+			{
+				ans+=a[pos];
+				a[pos]=0;
+			}
+			elc.erase(elc.begin());
+            // 注意在后面的充电站，如果还有电就不能直接删除，不然影响后续充电站的选择
+            if(a[pos]>0&&pos!=t[i]) elc.insert({dist,pos});
+		}
+		
+        // 使用无依赖电瓶
+        if(ans<x[i]&&sum)
+        {
+            if(ans+sum>=x[i])
+            {
+                sum-=x[i]-ans;
+                ans=x[i];
+            }
+            else
+            {
+                ans+=sum;
+                sum=0;
+            }
+        }
+		
+		if(ans!=x[i]) break;
+		// 充电
+		a[t[i]]=b[t[i]];
+		
+		// 为进下一个站做准备
+		suf.erase(suf.find(t[i]));
+		
+		if(suf.count(t[i])) elc.insert({*next(nxt[t[i]].find(x[i])),t[i]}); // 下一个位置
+		else sum+=a[t[i]];
+		
+	}
+	ans+=sum;
+	cout<<ans<<endl;
+}
+signed main()
+{
+	ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+	int T=1; cin>>T;
+	while(T--){solve();}
+	return 0;
+}
 */
