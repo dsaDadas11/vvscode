@@ -1,7 +1,7 @@
 /*
  * @Author: dsaDadas11
  * @Date: 2024-09-27 21:10:26
- * @LastEditTime: 2024-09-27 21:17:40
+ * @LastEditTime: 2025-07-21 18:30:00
  * @Description: go for it!
  */
 // URL: https://codeforces.com/contest/2013/problem/C
@@ -18,6 +18,8 @@
  假设向右的子串的长度为 n1,那么操作数就是 2*(n1+1) 因为最后一位的后一位也要判断，
  然后向左找子串的长度假设为 n2,那么操作数为2*n2 两者加一起为2*n+2很明显超2*n了，
  所以我们在向左找子串时完全可以去掉一个判断改用if，因为没有多余的情况需要判断了
+
+ 交互题可以关流
 */
 #include<bits/stdc++.h>
 #define endl '\n'

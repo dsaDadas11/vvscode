@@ -1,7 +1,7 @@
 /*
  * @Author: dsaDadas11
  * @Date: 2024-01-15 17:40:03
- * @LastEditTime: 2025-02-25 19:57:24
+ * @LastEditTime: 2025-07-29 14:09:00
  * @Description: go for it!
  */
 #include<bits/stdc++.h>
@@ -134,6 +134,76 @@ void solve()
     {
         cin>>x>>y;
         cout<<lca(x,y)<<endl;
+    }
+}
+signed main()
+{
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    int T=1; //cin>>T;
+    while(T--){solve();}
+    return 0;
+}
+
+
+#include<bits/stdc++.h>
+#define endl '\n'
+#define ll long long
+#define int ll
+using namespace std;
+constexpr int N=5e5+7;
+constexpr int M=2e3+7;
+int n,m,s;
+vector<int> g[N];
+int fa[N],son[N],sz[N],dep[N],top[N];
+// 父节点，重儿子，子树大小，深度，链头节点
+void dfs1(int u,int fax) // 初始化 fa,dep,son
+{
+    dep[u]=dep[fax]+1;
+    fa[u]=fax,sz[u]=1;
+    for(auto v:g[u])
+    {
+        if(v==fax) continue;
+        dfs1(v,u);
+        sz[u]+=sz[v];
+        if(sz[v]>sz[son[u]]) son[u]=v;
+    }
+}
+void dfs2(int u,int t) // 求各节点的 top数组
+{
+    top[u]=t; // 记录链头
+    if(!son[u]) return; // 无重儿子返回
+    dfs2(son[u],t); // 搜重儿子
+    for(auto v:g[u])
+    {
+        if(v==fa[u]||v==son[u]) continue;
+        dfs2(v,v); // 搜轻儿子
+    }
+}
+int lca(int u,int v)
+{
+    while(top[u]!=top[v]) // 让 u,v跳到一条链上
+    {
+        if(dep[top[u]]<dep[top[v]]) swap(u,v); // 保证 u的深度最大
+        u=fa[top[u]];
+    }
+    return dep[u]<dep[v]?u:v;
+}
+void solve()
+{
+    cin>>n>>m>>s;
+    int u,v;
+    for(int i=1;i<n;i++)
+    {
+        cin>>u>>v;
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
+    dfs1(s,0);
+    dfs2(s,0);
+    while(m--)
+    {
+        cin>>u>>v;
+        cout<<lca(u,v)<<endl;
     }
 }
 signed main()

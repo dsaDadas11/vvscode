@@ -1,0 +1,53 @@
+/*
+ * @Author: dsaDadas11
+ * @Date: 2025-08-11 10:57:23
+ * @LastEditTime: 2025-08-11 10:57:39
+ * @Description: go for it!
+ */
+#include<bits/stdc++.h>
+#define endl '\n'
+#define ll long long
+#define int ll
+using namespace std;
+constexpr int N=1e6+7;
+constexpr int M=2e3+7;
+int n,m;
+pair<int,int> p[N];
+void solve()
+{
+    cin>>n>>m;
+    for(int i=1;i<=m;i++)
+    {
+        cin>>p[i].first>>p[i].second;
+    }
+    p[++m]={0,0};
+    sort(p+1,p+1+m);
+    for(int i=2;i<=m;i++)
+    {
+        int db=p[i].second-p[i-1].second,da=p[i].first-p[i-1].first;
+        if(db>=0)
+        {
+            if(db!=da&&p[i].second+1>da)
+            {
+                cout<<"No"<<endl;
+                return;
+            }
+        }
+        if(db<0)
+        {
+            if(p[i].second+1>da)
+            {
+                cout<<"No"<<endl;
+                return;
+            }
+        }
+    }
+    cout<<"Yes"<<endl;
+}
+signed main()
+{
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    int T=1; cin>>T;
+    while(T--){solve();}
+    return 0;
+}

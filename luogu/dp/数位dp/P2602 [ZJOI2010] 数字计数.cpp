@@ -1,7 +1,7 @@
 /*
  * @Author: dsaDadas11
  * @Date: 2024-09-03 19:37:37
- * @LastEditTime: 2024-09-03 21:12:24
+ * @LastEditTime: 2025-07-25 16:14:36
  * @Description: go for it!
  */
 /*
@@ -119,5 +119,62 @@ signed main()
 	int T=1; //cin>>T;
 	while(T--){solve();}
 	return 0;
+}
+
+20250725 重新写了一遍，发现 cnt即上面的 sum最多只会迭代 12次，不是所有 dfs累加
+#include<bits/stdc++.h>
+#define endl '\n'
+#define ll long long
+#define int ll
+using namespace std;
+constexpr int N=1e6+7;
+constexpr int M=2e3+7;
+int l,r;
+int f[14][14];
+int a[14];
+int digit;
+int dfs(int pos,bool limit,bool lead0,int cnt)
+{
+    if(pos==0) return cnt;
+    if(!limit&&!lead0&&f[pos][cnt]!=-1) return f[pos][cnt];
+
+    int up=limit?a[pos]:9;
+    int res=0;
+    for(int i=0;i<=up;i++)
+    {
+        int tmp=cnt+(i==digit);
+        if(lead0&&i==0) tmp=0;
+        res+=dfs(pos-1,limit&&i==up,lead0&&i==0,tmp);
+    }
+    if(!limit&&!lead0) f[pos][cnt]=res;
+    return res;
+}
+int calc(int x)
+{
+    int len=0;
+    while(x)
+    {
+        a[++len]=x%10;
+        x/=10;
+    }
+    return dfs(len,1,1,0);
+}
+void solve()
+{
+    memset(f,-1,sizeof f);
+    cin>>l>>r;
+    for(int i=0;i<=9;i++)
+    {
+        digit=i;
+        cout<<calc(r)-calc(l-1)<<' ';
+    }
+    cout<<endl;
+}
+signed main()
+{
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    int T=1; //cin>>T;
+    while(T--){solve();}
+    return 0;
 }
 */
