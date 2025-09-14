@@ -1,7 +1,7 @@
 /*
  * @Author: dsaDadas11
  * @Date: 2024-09-15 21:56:53
- * @LastEditTime: 2025-03-06 12:48:51
+ * @LastEditTime: 2025-09-02 12:26:18
  * @Description: go for it!
  */
 /*
@@ -135,6 +135,64 @@ void solve()
         if(a[l[i]]==a[i]) ans+=r[i]-i-1;
         else ans+=r[i]-l[i]-2;
     }
+    cout<<ans<<endl;
+}
+signed main()
+{
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    int T=1; cin>>T;
+    while(T--){solve();}
+    return 0;
+}
+*/
+
+/*
+用笛卡尔树 dfs解法：
+#include<bits/stdc++.h>
+#define endl '\n'
+#define ll long long
+#define int ll
+using namespace std;
+constexpr int N=1e6+7;
+constexpr int M=2e3+7;
+int n;
+int a[N];
+int ls[N],rs[N];
+int stk[N],top;
+int ans;
+void dfs(int u,int l,int r)
+{
+    if(ls[u])
+    {
+        if(a[u]>a[ls[u]]) ans+=u-1-l+1;
+        dfs(ls[u],l,u-1);
+    }
+    if(rs[u])
+    {
+        if(a[u]>a[rs[u]]) ans+=r-(u+1)+1;
+        dfs(rs[u],u+1,r);
+    }
+}
+void solve()
+{
+    cin>>n;
+    top=0;
+    for(int i=1;i<=n;i++)
+    {
+        cin>>a[i];
+        stk[i]=ls[i]=rs[i]=0;
+    }
+
+    for(int i=1;i<=n;i++)
+    {
+        while(a[stk[top]]<a[i]&&top) top--;
+        if(!top) ls[i]=stk[top+1];
+        else ls[i]=rs[stk[top]],rs[stk[top]]=i;
+        stk[++top]=i;
+    }
+
+    ans=0;
+    dfs(stk[1],1,n);
     cout<<ans<<endl;
 }
 signed main()

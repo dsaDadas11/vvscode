@@ -1,7 +1,7 @@
 /*
  * @Author: dsaDadas11
  * @Date: 2024-01-15 17:40:03
- * @LastEditTime: 2025-07-29 14:09:00
+ * @LastEditTime: 2025-09-03 20:04:16
  * @Description: go for it!
  */
 #include<bits/stdc++.h>
@@ -143,8 +143,10 @@ signed main()
     while(T--){solve();}
     return 0;
 }
+*/
 
 
+/*
 #include<bits/stdc++.h>
 #define endl '\n'
 #define ll long long
@@ -209,6 +211,86 @@ void solve()
 signed main()
 {
     ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    int T=1; //cin>>T;
+    while(T--){solve();}
+    return 0;
+}
+*/
+
+/*
+#include<bits/stdc++.h>
+#define endl '\n'
+#define ll long long
+#define int ll
+using namespace std;
+constexpr int N=1e6+7;
+constexpr int M=2e3+7;
+int n,m,s;
+vector<int> g[N];
+int f[N][20],lg[N];
+int dfn[N],cur;
+void dfs(int u,int fax)
+{
+    dfn[u]=++cur;
+    f[dfn[u]][0]=fax;
+    for(auto v:g[u])
+    {
+        if(v==fax) continue;
+        dfs(v,u);
+    }
+}
+void init()
+{
+    lg[1]=0;
+    for(int i=2;i<N;i++)
+    {
+        lg[i]=lg[i-1]+((1<<(lg[i-1]+1))==i);
+    }
+}
+int lca(int u,int v)
+{
+    if(u==v) return u;
+    u=dfn[u],v=dfn[v];
+    if(u>v) swap(u,v);
+    int k=lg[v-u++]; // 没有加 1
+
+    int x=f[u][k],y=f[v-(1<<k)+1][k];
+    if(dfn[x]<dfn[y]) return x;
+    else return y; 
+}
+void solve()
+{
+    cin>>n>>m>>s;
+    int u,v;
+    for(int i=1;i<n;i++)
+    {
+        cin>>u>>v;
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
+
+    dfs(s,0);
+
+    for(int j=1;j<20;j++)
+    {
+        for(int i=1;i+(1<<j)-1<=n;i++)
+        {
+            int x=f[i][j-1],y=f[i+(1<<(j-1))][j-1];
+            if(dfn[x]<dfn[y]) f[i][j]=x;
+            else f[i][j]=y;
+        }
+    }
+
+    while(m--)
+    {
+        cin>>u>>v;
+        cout<<lca(u,v)<<endl;
+    }
+}
+signed main()
+{
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    init();
     int T=1; //cin>>T;
     while(T--){solve();}
     return 0;

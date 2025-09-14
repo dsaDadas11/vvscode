@@ -1,7 +1,7 @@
 /*
  * @Author: dsaDadas11
  * @Date: 2024-10-05 19:20:13
- * @LastEditTime: 2024-10-05 19:24:13
+ * @LastEditTime: 2025-08-29 23:08:50
  * @Description: go for it!
  */
 /*
@@ -54,3 +54,61 @@ signed main()
     while(T--){solve();}
     return 0;
 }
+
+/*
+正解：
+#include<bits/stdc++.h>
+#define endl '\n'
+#define ll long long
+#define int ll
+using namespace std;
+constexpr int N=1e6+7;
+constexpr int M=2e3+7;
+int n,w;
+int dp[1<<13];
+int f[1<<13];
+int cnt[17];
+void solve()
+{
+    cin>>n>>w;
+    int x;
+    for(int i=1;i<=n;i++)
+    {
+        cin>>x;
+        cnt[x-1]++;
+    }
+    
+    for(int i=0;i<(1<<13);i++)
+    {
+        for(int j=0;j<13;j++)
+        {
+            if((i>>j)&1)
+            {
+                f[i]=f[i-(1<<j)]+cnt[j];
+            }
+        }
+    }
+
+    memset(dp,0x3f,sizeof(dp));
+    dp[0]=0;
+    for(int u=0;u<(1<<13);u++)
+    {
+        for(int s=u;s;s=(s-1)&u)
+        {
+            if(f[s]<=w)
+            {
+                dp[u]=min(dp[u],dp[u^s]+1);
+            }
+        }
+    }
+
+    cout<<dp[(1<<13)-1]<<endl;
+}
+signed main()
+{
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    int T=1; //cin>>T;
+    while(T--){solve();}
+    return 0;
+}
+*/
