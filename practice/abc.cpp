@@ -1,9 +1,3 @@
-/*
- * @Author: dsaDadas11
- * @Date: 2025-02-11 11:51:34
- * @LastEditTime: 2025-09-13 23:18:11
- * @Description: go for it!
- */
 #include<bits/stdc++.h>
 #define endl '\n'
 #define ll long long

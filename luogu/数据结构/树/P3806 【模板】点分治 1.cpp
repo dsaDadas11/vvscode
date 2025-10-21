@@ -1,7 +1,7 @@
 /*
  * @Author: dsaDadas11
  * @Date: 2025-07-21 16:49:22
- * @LastEditTime: 2025-07-21 16:54:15
+ * @LastEditTime: 2025-09-15 20:42:29
  * @Description: go for it!
  */
 /*
@@ -70,7 +70,7 @@ void calc(int u)
             if(dist[i]<M)
             {
                 q[++p]=dist[i];
-                judge[dist[i]]=1;
+                judge[dist[i]]=1; // 算有多少个这样的距离时换成 ++
             }
         }
     }

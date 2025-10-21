@@ -1,7 +1,7 @@
 /*
  * @Author: dsaDadas11
  * @Date: 2025-08-13 10:43:16
- * @LastEditTime: 2025-08-13 11:29:31
+ * @LastEditTime: 2025-09-29 19:36:07
  * @Description: go for it!
  */
 /*
@@ -151,6 +151,59 @@ void solve()
         }
     }
     cout<<dp[n][m];
+}
+signed main()
+{
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    int T=1; //cin>>T;
+    while(T--){solve();}
+    return 0;
+}
+*/
+
+/*
+20250929重新学了一遍，之前的代码看不懂
+#include<bits/stdc++.h>
+#define endl '\n'
+#define ll long long
+// #define int ll
+using namespace std;
+constexpr int N=1e6+7;
+constexpr int M=2e3+7;
+int n,m;
+int f[307][307]; // 为选择 u节点，体积为 j时的最大价值
+vector<int> g[307];
+int w[307],v[307];
+void dfs(int u) // m为最大体积
+{
+    for(int i=v[u];i<=m;i++) f[u][i]=w[u];// 选 u节点
+
+    for(auto s:g[u])
+    {
+        dfs(s); // 递归子节点
+        for(int j=m;j>=v[u];j--)// 父节点要选，因此体积 >=v[u]
+        {
+            for(int k=0;k<=j-v[u];k++)// 分配
+            {
+                f[u][j]=max(f[u][j],f[u][j-k]+f[s][k]);
+            }
+        }
+    }
+}
+void solve()
+{
+    cin>>n>>m;
+    m++; // 多加一个 0节点
+    int rt=0;
+    for(int i=1;i<=n;i++)
+    {
+        int p;
+        cin>>p>>w[i];
+        g[p].push_back(i);
+    }
+
+    dfs(0);
+    cout<<f[0][m]<<endl;
 }
 signed main()
 {
