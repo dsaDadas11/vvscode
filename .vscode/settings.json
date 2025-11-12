@@ -93,7 +93,9 @@
         "stop_token": "cpp",
         "syncstream": "cpp",
         "text_encoding": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "rope": "cpp",
+        "slist": "cpp"
     },
     "editor.fontSize": 16,
     "git.enabled": false,

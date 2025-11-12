@@ -1,7 +1,7 @@
 /*
  * @Author: dsaDadas11
  * @Date: 2025-10-12 11:58:52
- * @LastEditTime: 2025-10-12 11:59:03
+ * @LastEditTime: 2025-11-06 20:13:00
  * @Description: go for it!
  */
 #include<bits/stdc++.h>
@@ -23,7 +23,7 @@ void init()
         for(int j=1;j<=cnt&&p[j]*i<N;j++)
         {
             a[p[j]*i]=1;
-            if(!i%p[j]) break;
+            if(i%p[j]==0) break;
         }
     }
 }
