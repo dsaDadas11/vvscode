@@ -1,7 +1,7 @@
 /*
  * @Author: dsaDadas11
- * @Date: 2025-02-11 11:51:34
- * @LastEditTime: 2025-11-12 21:47:38
+ * @Date: 2026-01-21 15:23:07
+ * @LastEditTime: 2026-01-21 15:23:14
  * @Description: go for it!
  */
 #include<bits/stdc++.h>
@@ -13,7 +13,10 @@ constexpr int N=1e6+7;
 constexpr int M=2e3+7;
 void solve()
 {
-    
+    string s;
+    cin>>s;
+    sort(s.begin(),s.end());
+    cout<<s<<endl;
 }
 signed main()
 {
