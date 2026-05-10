@@ -20,12 +20,20 @@ Competitive programming and algorithm problem solutions, written in C++.
 | [POJ](POJ/) | 4 |
 | [lintcode](lintcode/) | 1 |
 | [StarryCoding](StarryCoding/) | 1 |
+| [LeetCode](leetcode/) | 27 |
 
 ## Contest Records
 
-- [CCPC / ICPC Regional Contests](Programming%20Competition/)
+- [CCPC Regional Contests](Programming%20Competition/CCPC/)
+- [ICPC Regional Contests](Programming%20Competition/ICPC/)
+- [Provincial Contests (省赛)](Programming%20Competition/%E7%9C%81%E8%B5%9B/)
 - [HDU OJ Team Training](HDU%20OJ/2024%E7%A7%8B%E5%9B%A2%E9%98%9F%E8%AE%AD%E7%BB%83%E8%B5%9B/)
 - [HRBUST Freshman Contests](HRBUST%20OJ/)
+
+## Other
+
+- [Class Program (课堂练习)](class_program/)
+- [Practice](practice/)
 
 ## Language
 
