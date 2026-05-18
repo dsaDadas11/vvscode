@@ -99,5 +99,9 @@
     },
     "editor.fontSize": 16,
     "git.enabled": false,
-    "C_Cpp.errorSquiggles": "enabled"
+    "C_Cpp.errorSquiggles": "enabled",
+    "permissions": {
+        "defaultMode": "bypassPermissions"
+    },
+    "skipDangerousModePermissionPrompt": true
 }
